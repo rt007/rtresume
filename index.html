@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Romal Thakkar</title>
+  <meta name="description" content="Romal Thakkar — Emerging Technologies Researcher | Agile Certified (CSM®, CSPO®)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:          #0F63FA;
+      --secondary:        #EBEBEB;
+      --neutral:          #171717;
+      --bg:               #FFFFF0;
+      --btn-radius:       8px;
+      --card-radius:      8px;
+      --card-inner-radius:4px;
+      --card-bg:          color-mix(in srgb, #EBEBEB 40%, transparent);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Figtree', sans-serif;
+      color: var(--neutral);
+      background-color: var(--bg);
+    }
+
+    #scroll-container {
+      height: 100vh;
+      overflow-y: auto;
+      background-color: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    main {
+      padding-top: 24px;
+      padding-bottom: 100px;
+    }
+
+    /* ── Layout helpers ─────────────────────────────── */
+    .wrap {
+      margin: 0 auto;
+      padding: 0 12px;
+      max-width: 570px;
+    }
+    @media (min-width: 640px) { .wrap { padding: 0 16px; } }
+
+    .section-body { margin-top: 40px; }
+
+    /* ── Typography ─────────────────────────────────── */
+    .name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 2rem;
+    }
+    @media (min-width: 640px) { .name { font-size: 1.25rem; } }
+
+    .label {
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: .8;
+      margin-top: 8px;
+    }
+
+    .location {
+      font-style: normal;
+      font-size: .9375rem;
+      font-weight: 500;
+      opacity: .8;
+      margin-top: 8px;
+    }
+
+    .section-title {
+      font-size: 1.0625rem;
+      font-weight: 500;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .card-role {
+      font-size: .875rem;
+      opacity: .9;
+      line-height: 1.4;
+    }
+
+    .separator { opacity: .9; }
+
+    .card-dates {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: .875rem;
+      opacity: .9;
+    }
+
+    .hl-label {
+      font-size: .875rem;
+      font-weight: 500;
+      opacity: .8;
+      margin-top: 12px;
+    }
+
+    .hl-list {
+      margin-top: 8px;
+      padding: 0 12px;
+      border: 1px solid var(--secondary);
+      border-radius: var(--card-inner-radius);
+    }
+
+    .hl-item {
+      font-size: .875rem;
+      opacity: .9;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--secondary);
+      line-height: 1.5;
+      overflow-wrap: break-word;
+    }
+    .hl-item:last-child { border-bottom: none; }
+
+    /* ── Avatar ─────────────────────────────────────── */
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    /* ── Buttons ────────────────────────────────────── */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .link-slot {
+      display: flex;
+      align-items: center;
+      height: 47px;
+      overflow: hidden;
+    }
+
+    .btn-wrap {
+      display: inline-block;
+      border: 1px solid transparent;
+      border-radius: var(--btn-radius);
+      transition: margin-top .2s;
+    }
+    .btn-wrap:hover { margin-top: -4px; }
+
+    button {
+      font-family: 'Figtree', sans-serif;
+      font-size: .875rem;
+      font-weight: 600;
+      padding: 10px 16px;
+      border: 1px solid transparent;
+      border-radius: var(--btn-radius);
+      cursor: pointer;
+      color: var(--neutral);
+      background: transparent;
+      box-shadow:
+        0 1px 2px 0 color-mix(in srgb, var(--neutral) 10%, transparent),
+        inset 0 -2px 1px 0 color-mix(in srgb, var(--neutral) 10%, transparent),
+        inset 0 0 0 .35px color-mix(in srgb, var(--neutral) 10%, transparent);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+
+    .btn-icon { padding: 10px; }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Cards ──────────────────────────────────────── */
+    .cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (min-width: 640px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid transparent;
+      border-radius: var(--card-radius);
+      padding: 14px;
+    }
+    @media (min-width: 640px) { .card { padding: 20px; } }
+
+    .card-h { height: 100%; }
+
+    .card-hdr {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 6px;
+    }
+
+    /* Education icon badge */
+    .edu-icon {
+      display: inline-flex;
+      padding: 4px;
+      color: #525866;
+      border: 1px solid var(--secondary);
+      border-radius: 6px;
+    }
+
+    .degree-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .degree-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: #525866;
+      flex-shrink: 0;
+    }
+
+    /* ── Bottom navigation ──────────────────────────── */
+    #bottom-nav {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      padding: 0 12px;
+      z-index: 50;
+    }
+
+    .nav-pill {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--secondary);
+      border-radius: 9999px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      max-width: 570px;
+      width: 100%;
+    }
+    .nav-pill::-webkit-scrollbar { display: none; }
+
+    .nav-item {
+      padding: 6px 12px;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--neutral);
+      opacity: .8;
+      white-space: nowrap;
+      border-radius: 9999px;
+      cursor: pointer;
+      background: transparent;
+      transition: background-color .2s, opacity .2s;
+      text-decoration: none;
+      display: block;
+    }
+    @media (min-width: 640px) { .nav-item { font-size: .9375rem; } }
+    .nav-item:hover  { opacity: 1; }
+    .nav-item.active {
+      background-color: color-mix(in srgb, var(--neutral) 5%, transparent);
+      opacity: 1;
+    }
+
+    /* Utility */
+    .sm { font-size: .875rem; }
+    .op90 { opacity: .9; }
+    .op80 { opacity: .8; }
+    .fw500 { font-weight: 500; }
+    .mt2  { margin-top: 2px; }
+    .mt12 { margin-top: 12px; }
+    .mt20 { margin-top: 20px; }
+  </style>
+</head>
+<body>
+<div id="scroll-container">
+<main>
+
+  <!-- ════════════════ BASICS ════════════════ -->
+  <section id="basics">
+    <div style="padding-top:40px;">
+
+      <!-- Avatar -->
+      <div class="wrap" style="margin-bottom:16px;">
+        <img
+          src="/assets/ProfilePic_cropped.jpg"
+          alt="Romal Thakkar"
+          class="avatar"
+          width="80" height="80"
+          loading="lazy"
+        >
+      </div>
+
+      <!-- Name / title / location -->
+      <div class="wrap">
+        <h1 class="name">Romal Thakkar</h1>
+        <div class="label">Emerging Technologies Researcher | Agile Certified (CSM®, CSPO®)</div>
+        <address class="location">Dublin, Ireland</address>
+      </div>
+
+      <!-- Social icon buttons -->
+      <div class="wrap social-row">
+
+        <!-- Portfolio (globe) -->
+        <div class="link-slot">
+          <a href="https://romalbuilds.com" target="_blank" rel="noopener noreferrer" aria-label="Portfolio">
+            <div class="btn-wrap">
+              <button class="btn-icon" aria-label="Portfolio">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--neutral)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="link-slot">
+          <a href="https://linkedin.com/in/romalthakkar" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <div class="btn-wrap">
+              <button class="btn-icon" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50" fill="var(--neutral)">
+                  <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z
+                    M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53
+                    C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29
+                    c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56c3.97,0,7.19,2.73,7.19,8.26V39z"/>
+                </svg>
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!-- Email -->
+        <div class="link-slot">
+          <a href="mailto:romal.thakkar@gmail.com" aria-label="Email">
+            <div class="btn-wrap">
+              <button class="btn-icon" aria-label="Email">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="var(--neutral)">
+                  <path d="M256 352c-16.53 0-33.06-5.422-47.16-16.41L0 173.2V400C0 426.5 21.49 448 48 448h416
+                    c26.51 0 48-21.49 48-48V173.2l-208.8 162.5C289.1 346.6 272.5 352 256 352z
+                    M16.29 145.3l212.2 165.1c16.19 12.6 38.87 12.6 55.06 0l212.2-165.1
+                    C505.1 137.3 512 125 512 112C512 85.49 490.5 64 464 64h-416C21.49 64 0 85.49 0 112
+                    C0 125 6.01 137.3 16.29 145.3z"/>
+                </svg>
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <!-- GitHub -->
+        <div class="link-slot">
+          <a href="https://github.com/rt007" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <div class="btn-wrap">
+              <button class="btn-icon" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" fill="var(--neutral)">
+                  <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63
+                    C12.036,26.468,12,26.28,12,26.047v-2.051c-0.487,0-1.303,0-1.508,0
+                    c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526
+                    c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222
+                    c0.478,0.627,0.703,0.769,1.596,0.769c0.433,0,1.081-0.025,1.691-0.121
+                    c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098
+                    c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8
+                    c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9
+                    c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8
+                    c0.732,0.731,0.381,2.656,0.102,3.594c0.836,0.945,1.328,2.066,1.328,3.226
+                    c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734
+                    c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"/>
+                </svg>
+              </button>
+            </div>
+          </a>
+        </div>
+
+      </div><!-- /social-row -->
+    </div>
+  </section><!-- /basics -->
+
+
+  <!-- ════════════════ WORK ════════════════ -->
+  <section id="work">
+    <div class="wrap section-body">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="cards-list">
+
+        <!-- Insight Research -->
+        <div class="card">
+          <div class="card-hdr">
+            <span class="card-title">Insight Research Ireland Centre for Data Analytics, Dublin, Ireland</span>
+            <span class="separator">|</span>
+            <span class="card-role">Lead Researcher (Emerging Technologies)</span>
+          </div>
+          <div class="card-dates">
+            <time>Jul 2024</time><span>→</span><time>Present</time>
+          </div>
+          <p class="hl-label">Highlights</p>
+          <div class="hl-list">
+            <p class="hl-item">Spearheading research for the Digital Twins for Impact (DT4I) and Digital Twins for Emergency Management (DT4EM) initiatives, enhancing risk assessment and emergency management through digital twin technology</p>
+            <p class="hl-item">Published a comprehensive peer-reviewed report on the DT4I project, detailing best practices for Digital Twins in Risk and Emergency Management, real-world case studies (Smart DCU and DFB), and insights from leading emergency management experts</p>
+            <p class="hl-item">Collaborated with key partners including Dublin Fire Brigade, Smart DCU, and Bentley Systems to drive innovation and implement impactful Digital Twin solutions</p>
+            <p class="hl-item">Developed and launched a short video, podcast, and a website (in development) using GenAI, to showcase project objectives and provide supplementary information</p>
+            <p class="hl-item">Achieved national media recognition, with research featured in Emergency Services Ireland, Council Review, and Dublin City University's website</p>
+          </div>
+        </div>
+
+        <!-- Dublin City University -->
+        <div class="card">
+          <div class="card-hdr">
+            <span class="card-title">Dublin City University, Dublin, Ireland</span>
+            <span class="separator">|</span>
+            <span class="card-role">Business Mentor and Graduate Teaching Assistant (Project Management &amp; Strategy)</span>
+          </div>
+          <div class="card-dates">
+            <time>Jan 2024</time><span>→</span><time>Aug 2024</time>
+          </div>
+          <p class="hl-label">Highlights</p>
+          <div class="hl-list">
+            <p class="hl-item">Mentored nine teams and facilitated agile projects across four different industries, ensuring successful delivery of the DCUBS 2024 Practicum</p>
+            <p class="hl-item">Served as the primary liaison between clients, students, and staff, driving collaboration and ensuring alignment throughout the project lifecycle</p>
+            <p class="hl-item">Organised and executed practicum events, overseeing logistics for gatherings of over 200 attendees to ensure smooth operations</p>
+            <p class="hl-item">Managed client relationships with senior stakeholders from leading multinational organisations and Irish businesses</p>
+            <p class="hl-item">Worked directly with the Technology Head on the e-learning portal to optimise online learning experiences within the DCU Business School</p>
+            <p class="hl-item">Conducted tutorials and taught over 500 students various subjects, including Business Analytics, MS Excel, PowerBI, SQL, &amp; Critical Thinking</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section><!-- /work -->
+
+
+  <!-- ════════════════ EDUCATION ════════════════ -->
+  <section id="education">
+    <div class="wrap section-body">
+      <h2 class="section-title">Education</h2>
+      <div class="cards-list">
+
+        <!-- DCU -->
+        <div class="card">
+          <h6 class="card-title">Dublin City University, Dublin, Ireland</h6>
+          <div class="card-dates">
+            <time>Sep 2021</time><span>→</span><time>Sep 2022</time>
+          </div>
+          <p class="sm op90" style="font-weight:600; margin-top:4px;">MSc in Management (Business)</p>
+          <p class="hl-label">Highlights</p>
+          <div class="hl-list">
+            <p class="hl-item">Attained First Class Honours score in 8 out of 10 subjects throughout the one-year MSc in Management programme — Featured in the article on DCU Business school's website for 'The Life Of An International Student at DCU'</p>
+            <p class="hl-item">Strategy Consulting Project - Accelerating Growth and Revenue: Led a team of five as Project Leader for eight months, achieving First Class Honours. Developed strategy with 'Element Health Fitness Performance' founder, increasing new customers by 20%+ and boosting top-line by ~14%</p>
+            <p class="hl-item">Sustainability Consulting Project - Achieving Green Initiatives: Collaborated with CIÉ (Córas Iompair Éireann) Group's sustainability team for four months to accomplish circular economy initiatives throughout the organisation towards the accomplishment of UN Sustainable Development Goals (SDGs)</p>
+          </div>
+        </div>
+
+        <!-- University of Mumbai -->
+        <div class="card">
+          <h6 class="card-title">University of Mumbai, Mumbai, India</h6>
+          <div class="card-dates">
+            <time>Aug 2011</time><span>→</span><time>Jul 2015</time>
+          </div>
+          <p class="sm op90" style="font-weight:600; margin-top:4px;">Bachelor of Engineering in Information Technology</p>
+          <p class="hl-label">Highlights</p>
+          <div class="hl-list">
+            <p class="hl-item">Achieved First Class Grade</p>
+            <p class="hl-item">Published a Research Paper based on undergraduate thesis: 'Artificial Intelligence Driven Judgment Card Game' in IJCSMC (International Journal of Computer Science and Mobile Computing), ISSN 2320-088X</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><!-- /education -->
+
+
+  <!-- ════════════════ EXTRA-CURRICULAR ════════════════ -->
+  <section id="volunteer">
+    <div class="wrap section-body">
+      <h2 class="section-title">Extra-Curricular and Social Activities</h2>
+      <div class="cards-list">
+
+        <div class="card">
+          <div class="card-hdr">
+            <span class="card-title">• Won Gold Medal at the Urban Tech Challenge (Hackathon), hosted by Google &amp; Bentley Systems, for Best Overall Solution; selected to showcase project at Bentley's Year in Infrastructure 2025 (YII) conference in Amsterdam</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr">
+            <span class="card-title">• Selected as top 5 students to judge the 'School Enterprise Challenge', hosted by UK-based not-for-profit organisation Teach A Man to Fish; reviewed and provided feedback on 5+ business plans of startups from schools across Africa, India and SEA</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr">
+            <span class="card-title">• Volunteered for three months to teach older citizens digital technologies &amp; tools as part of the Age-Friendly University (AFU) initiative</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr">
+            <span class="card-title">• Participated in the Gorey Hackathon to pitch the business model for 'smart cities' setup at Gorey and was evaluated directly by the Wexford County Council, DotLab, and DCU Business School</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><!-- /volunteer -->
+
+
+  <!-- ════════════════ CERTIFICATES ════════════════ -->
+  <section id="certificates">
+    <div class="wrap section-body">
+      <h2 class="section-title">Certificates</h2>
+      <div class="grid-2">
+
+        <div class="card card-h">
+          <h6 class="card-title">Certified Scrum Product Owner (CSPO)</h6>
+          <time class="sm op90 mt2" style="display:block;">Aug 2023</time>
+          <div class="mt12">
+            <p class="sm op80 fw500">Issued By</p>
+            <p class="sm op90 mt2">Scrum Alliance</p>
+          </div>
+        </div>
+
+        <div class="card card-h">
+          <h6 class="card-title">Certified Scrum Master (CSM)</h6>
+          <time class="sm op90 mt2" style="display:block;">Jun 2023</time>
+          <div class="mt12">
+            <p class="sm op80 fw500">Issued By</p>
+            <p class="sm op90 mt2">Scrum Alliance</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><!-- /certificates -->
+
+
+  <!-- ════════════════ SKILLS ════════════════ -->
+  <section id="skills">
+    <div class="wrap section-body">
+      <h2 class="section-title">Skills</h2>
+      <div class="grid-2">
+
+        <div class="card card-h">
+          <h6 class="card-title">Artificial Intelligence</h6>
+          <p class="sm op90 mt12">GenAI (Claude Code, OpenAI Codex, Google Gemini, Cursor), Agents, Automated Workflows, Open Models (Gemma, Llama, OpenAI)</p>
+        </div>
+
+        <div class="card card-h">
+          <h6 class="card-title">Project Management</h6>
+          <p class="sm op90 mt12">Agile Methodologies, Scrum, Kanban, Project Delivery, Stakeholder Management, Client Relations, Team Leadership</p>
+        </div>
+
+        <div class="card card-h">
+          <h6 class="card-title">Digital Transformation</h6>
+          <p class="sm op90 mt12">Legacy System Modernization, Workflow Optimisation, Data Accessibility, Digital Twin Technology, Emerging Technologies</p>
+        </div>
+
+        <div class="card card-h">
+          <h6 class="card-title">Data Analysis &amp; Software</h6>
+          <p class="sm op90 mt12">SQL, PowerBI, Tableau, Java, Python, Microsoft Office (Excel, PowerPoint, Word)</p>
+        </div>
+
+        <div class="card card-h">
+          <h6 class="card-title">Business Strategy &amp; Development</h6>
+          <p class="sm op90 mt12">Market Research, Business Planning, Revenue Growth, Operational Efficiency, Process Improvement, Negotiation, Strategic Consulting</p>
+        </div>
+
+      </div>
+    </div>
+  </section><!-- /skills -->
+
+</main>
+
+<!-- ════════════════ BOTTOM NAV ════════════════ -->
+<nav id="bottom-nav" aria-label="Page sections">
+  <div class="nav-pill">
+    <a href="#basics"      class="nav-item active">Home</a>
+    <a href="#work"        class="nav-item">Work</a>
+    <a href="#education"   class="nav-item">Education</a>
+    <a href="#volunteer"   class="nav-item">Extra-Curricular</a>
+    <a href="#certificates"class="nav-item">Certificates</a>
+    <a href="#skills"      class="nav-item">Skills</a>
+  </div>
+</nav>
+
+</div><!-- /scroll-container -->
+
+<script>
+  const scrollEl   = document.getElementById('scroll-container');
+  const navItems   = document.querySelectorAll('.nav-item');
+  const sectionIds = ['basics','work','education','volunteer','certificates','skills'];
+
+  function updateNav() {
+    const top = scrollEl.scrollTop + 80;
+    let active = sectionIds[0];
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= top) active = id;
+    }
+    navItems.forEach(a => {
+      const matches = a.getAttribute('href') === '#' + active;
+      a.classList.toggle('active', matches);
+    });
+  }
+
+  scrollEl.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+</script>
+</body>
+</html>
